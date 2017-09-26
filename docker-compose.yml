@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  lisp-interpreter:
+    image: lisp-interpreter
+    build:
+      context: ./lisp-interpreter
+      dockerfile: Dockerfile

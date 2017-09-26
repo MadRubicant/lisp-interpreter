@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LispInterpreter": {
+      "commandName": "Project",
+      "commandLineArgs": "123"
+    }
+  }
+}
