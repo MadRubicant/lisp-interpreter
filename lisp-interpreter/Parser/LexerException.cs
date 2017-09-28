@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LispInterpreter.Parser
+namespace LispInterpreter.Parsing
 {
 
     public class LexerException : Exception {

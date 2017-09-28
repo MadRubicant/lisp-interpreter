@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-using LispInterpreter.Parser.Tokens;
+using LispInterpreter.Parsing.Tokens;
 
-namespace LispInterpreter.Parser.AST
+namespace LispInterpreter.Parsing.AST
 {
     class FunctionNode : ASTNode {
         private static int Plus(int left, int right) {
@@ -29,6 +29,12 @@ namespace LispInterpreter.Parser.AST
             throw new NotImplementedException();
         }
 
+        public override string Print(int depth) {
+            string cur = GetType().ToString();
+            cur = cur.PadLeft(cur.Length + depth, '|');
+            cur += '\n' + Left.Print(depth + 1) + Right.Print(depth + 1);
+            return cur;
+        }
 
         public FunctionNode(OpToken op, ASTNode left, ASTNode right) {
             Left = left;

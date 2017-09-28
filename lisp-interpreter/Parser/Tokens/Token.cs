@@ -4,7 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Linq;
 
-namespace LispInterpreter.Parser.Tokens
+namespace LispInterpreter.Parsing.Tokens
 {
     public abstract class Token : IEquatable<Token>
     {

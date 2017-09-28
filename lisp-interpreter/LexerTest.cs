@@ -6,8 +6,8 @@ using System.Linq;
 
 using System.Reflection;
 
-using LispInterpreter.Parser;
-using LispInterpreter.Parser.Tokens;
+using LispInterpreter.Parsing;
+using LispInterpreter.Parsing.Tokens;
 
 namespace LispInterpreter
 {

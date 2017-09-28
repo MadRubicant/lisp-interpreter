@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using LispInterpreter.Parser.Tokens;
+using LispInterpreter.Parsing.Tokens;
 
-namespace LispInterpreter.Parser
+namespace LispInterpreter.Parsing
 {
 
     class Lexer {
@@ -17,6 +17,17 @@ namespace LispInterpreter.Parser
         int Pos;
         int Line;
         public bool TokensRemain { get; private set; }
+
+        public Lexer()
+        {
+            Input = "".ToCharArray();
+            Pos = 0;
+            Line = 0;
+            TokensRemain = false;
+            Patterns = new Dictionary<Regex, Type>();
+            foreach (var type in Token.GetTokenPatterns())
+                RegisterTokenDef(type.Item2, type.Item1);
+        }
 
         public Lexer(string InputString) {
             Input = InputString.ToCharArray();
@@ -30,6 +41,12 @@ namespace LispInterpreter.Parser
 
         public void RegisterTokenDef(string Expression, Type TokenType) {
             Patterns.Add(new Regex(String.Format("^({0})", Expression)), TokenType);
+        }
+
+        public void AddText(string text) {
+            Input = Input.Skip(Pos).Concat(text).ToArray();
+            Pos = 0;
+            TokensRemain = text.Length != 0;
         }
 
         public Token NextToken() {

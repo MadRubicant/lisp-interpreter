@@ -1,6 +1,6 @@
 ﻿using System;
-using LispInterpreter.Parser;
-using LispInterpreter.Parser.Tokens;
+using LispInterpreter.Parsing;
+using LispInterpreter.Parsing.Tokens;
 
 using System.Text.RegularExpressions;
 
@@ -10,11 +10,8 @@ namespace LispInterpreter
     {
         static void Main(string[] args)
         {
-            
-            Lexer L = new Lexer(args[0]);
-            while (L.TokensRemain)
-                Console.WriteLine(L.NextToken());
-            Console.Read();
+            REPL MainLoop = new REPL(Console.In);
+            MainLoop.Run();
         }
     }
 }
